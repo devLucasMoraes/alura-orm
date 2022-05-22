@@ -5,6 +5,7 @@ const router = Router()
 
 // const pController = new PessoaController nao precisa instanciar isso pois colocamos static 
 router.get('/pessoas', PessoaController.pegaTodasAsPessoas)
+router.get('/pessoas/:id', PessoaController.pegaUmaPessoa)
 
 module.exports = router
 
