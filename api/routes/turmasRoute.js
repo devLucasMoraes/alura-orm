@@ -8,4 +8,5 @@ router
  .post('/turmas', TurmaController.criaTurma)
  .put('/turmas/:id', TurmaController.atualizaTurma)
  .delete('/turmas/:id', TurmaController.deletaTurma)
+ .post('/turmas/:id/restaurar', TurmaController.restauraTurma)
 module.exports = router
