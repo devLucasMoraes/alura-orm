@@ -18,7 +18,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Pessoas.init({
-    nome: DataTypes.STRING,
+    nome: {
+      type: DataTypes.STRING,
+      validate: {
+        customValidator(value) {
+          if (value.length < 5) {
+            throw new Error("o campo nome deve ter mais de 5 caracteres")
+          }
+        }
+      }
+    },
     ativo: DataTypes.BOOLEAN,
     email: {
       type: DataTypes.STRING,
