@@ -11,6 +11,7 @@ router.post('/pessoas', PessoaController.criaPessoa)
 router.put('/pessoas/:id', PessoaController.atualizaPessoa)
 router.delete('/pessoas/:id', PessoaController.deletaPessoa)
 router.post('/pessoas/:id/restaurar', PessoaController.restauraPessoa)
+router.post('/pessoas/:estudanteId/cancela', PessoaController.CancelaPessoa)
 
 router.get('/pessoas/:estudanteId/matricula/', PessoaController.pegaTodasAsMatriculas)
 router.get('/pessoas/matricula/:turmaId/confirmadas', PessoaController.pegaMatriculasPorTurma)
