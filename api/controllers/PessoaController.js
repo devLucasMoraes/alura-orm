@@ -122,6 +122,24 @@ class PessoaController {
         }
     }
 
+    static async pegaMatriculasPorTurma(req, res) {
+        const { turmaId } = req.params
+        try{
+            const todasAsMatriculas = await database.Matriculas
+                .findAndCountAll({
+                    where: {
+                        turma_id: Number(turmaId),
+                        status: 'confirmado'
+                    },
+                    limit: 20,
+                    order: [['estudante_id' , 'ASC']]
+                })
+            return res.status(200).json(todasAsMatriculas)            
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
     static async criaMatricula(req, res) {
         const { estudanteId } = req.params
         const novaMatricula = {...req.body, estudante_id: Number(estudanteId)}
