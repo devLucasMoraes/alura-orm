@@ -1,10 +1,13 @@
-const database = require('../models')
+//const database = require('../models')
+
+const Services = require('../services/Services')
+const niveisServices = new Services('Niveis')
 
 class NivelController {
     // static quer dizer que esse metodo pode ser chamado no codigo sem ter que criar uma nova instancia de classes (new NivelController)
     static async pegaTodosOsNiveis(req, res) {
         try {
-            const TodosOsNiveis = await database.Niveis.findAll()
+            const TodosOsNiveis = await niveisServices.PegaTodosOsRegistros()
             return res.status(200).json(TodosOsNiveis)
         } catch (error) {
             return res.status(500).json(error.message)

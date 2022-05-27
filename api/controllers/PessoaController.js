@@ -1,5 +1,8 @@
-const database = require('../models')
-const Sequelize = require('sequelize')
+/* const database = require('../models')
+const Sequelize = require('sequelize') */
+
+const {PessoasServices} = require('../services')
+const pessoasServices = new PessoasServices()
 
 class PessoaController {
     // static quer dizer que esse metodo pode ser chamado no codigo sem ter que criar uma nova instancia de classes (new pessoaController)
@@ -14,7 +17,7 @@ class PessoaController {
     
     static async pegaTodasAsPessoasAtivas(req, res) {
         try {
-            const TodasAsPessoasAtivas = await database.Pessoas.findAll()
+            const TodasAsPessoasAtivas = await pessoasServices.PegaTodosOsRegistros()
             return res.status(200).json(TodasAsPessoasAtivas)
         } catch (error) {
             return res.status(500).json(error.message)
