@@ -8,7 +8,7 @@ class PessoaController {
     // static quer dizer que esse metodo pode ser chamado no codigo sem ter que criar uma nova instancia de classes (new pessoaController)
     static async pegaTodasAsPessoas(req, res) {
         try {
-            const TodasAsPessoas = await database.Pessoas.scope('todas').findAll()
+            const TodasAsPessoas = await pessoasServices.pegaTodosOsRegistros()
             return res.status(200).json(TodasAsPessoas)
         } catch (error) {
             return res.status(500).json(error.message)
@@ -17,7 +17,7 @@ class PessoaController {
     
     static async pegaTodasAsPessoasAtivas(req, res) {
         try {
-            const TodasAsPessoasAtivas = await pessoasServices.PegaTodosOsRegistros()
+            const TodasAsPessoasAtivas = await pessoasServices.pegaRegistrosAtivos()
             return res.status(200).json(TodasAsPessoasAtivas)
         } catch (error) {
             return res.status(500).json(error.message)
